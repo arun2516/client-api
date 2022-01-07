@@ -20,7 +20,7 @@ const userrouter = require("./src/routers/user.router");
 const ticketrouter = require("./src/routers/ticket.router");
 
 //API security
-app.use(helmet());
+// app.use(helmet());
 
 // handle CORS
 app.use(cors());
