@@ -1,15 +1,9 @@
 require("dotenv").config();
-
 const express = require("express");
 const app = express();
-
 const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
-
-
-
-
 const port = process.env.PORT || 3000
 
 
@@ -61,9 +55,9 @@ const handleerror = require("./src/routers/utils/errorhandler")
 
 // error handling using error handler
 app.use((req,res,next)=>{
-    const error = new Error("resources not found")
-    error.status = 404
-    next(error)
+    const error = new Error("resources not found");
+    error.status = 404;
+    next(error);
 })
 
 app.use((error,req,res,next)=>{

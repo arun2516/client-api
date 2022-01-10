@@ -7,7 +7,7 @@ Content-Type: application/json
 "company":"company name",
 "address":"some address",
 "phone":632873737,
-"email":"arat@e.com",
+"email":"arat@ejk.com",
 "password":"secret123"
 
 }
@@ -17,6 +17,6 @@ POST http://localhost:3000/v1/user/login
 Content-Type: application/json
 
 {
-    "email":"arat@e.com",
+    "email":"arat@ejk.com",
     "password":"secret123"
 }

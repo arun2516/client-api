@@ -36,7 +36,7 @@ router.post("/", async(req,res)=>{
         res.json({status:"error",message:error.message})
     }
    
-})
+});
 
 // user sign in router
 router.post("/login",async(req,res)=>{
@@ -62,7 +62,7 @@ router.post("/login",async(req,res)=>{
     }
 
     const accessjwt = await createaccessjwt(user.email,`${user._id}`);
-    const refreshjwt = await createrefreshjwt(user.email);
+    const refreshjwt = await createrefreshjwt(user.email,`${user._id}`);
 
 
     res.json({
@@ -70,7 +70,7 @@ router.post("/login",async(req,res)=>{
          message:"login successfully",
         accessjwt,
         refreshjwt
-        })
-})
+        });
+});
 
 module.exports = router;

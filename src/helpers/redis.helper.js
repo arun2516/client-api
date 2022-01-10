@@ -1,7 +1,10 @@
 
 const redis = require("redis");
-const client = redis.createClient();
-//redis://localhost:6379
+const client = redis.createClient(process.env.REDIS_URL);
+
+client.on("error", function(error){
+    console.error(error);
+});
 
 const setjwt = (key,value)=>{
     return new Promise((resolve,reject)=>{
@@ -22,7 +25,7 @@ const setjwt = (key,value)=>{
 const getjwt = (key)=>{
     return new Promise((resolve,reject)=>{
         try{
-            client.get("key",(err,res)=>{
+            client.get(key,(err,res)=>{
                 if(err) reject(err);
                 resolve(res);
             });
@@ -35,6 +38,16 @@ const getjwt = (key)=>{
     
 };
 
+const deletejwt = (key)=>{
+    try{
+        client.del(key);
+    }catch(error){
+        console.log(error)
+    }
+};
+
 module.exports = {
-    setjwt,getjwt
+    setjwt,
+    getjwt,
+    deletejwt,
 }
